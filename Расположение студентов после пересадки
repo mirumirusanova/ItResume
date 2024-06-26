@@ -1,0 +1,7 @@
+select case 
+    when seat % 2 = 0 then seat -1
+    when seat % 2 = 1 and seat != (select max(seat) from Students) then seat +1
+    else seat
+    end seat, name
+from Students
+order by seat

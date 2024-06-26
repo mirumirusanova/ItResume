@@ -1,0 +1,5 @@
+select last_nm, first_nm, middle_nm, tinkoff.job.position_nm
+from tinkoff.employees
+join tinkoff.job 
+on tinkoff.employees.position_id = tinkoff.job.position_id 
+where valid_to_dttm > '2020-10-10' and valid_from_dttm < '2020-10-10'

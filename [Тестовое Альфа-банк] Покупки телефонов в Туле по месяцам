@@ -1,0 +1,9 @@
+select trim(to_char(created_at, 'month')) as month, count(distinct id_customer) as people
+from Customer
+join Purchases
+on Customer.ID_CUSTOMER = Purchases.user_id
+join SKUS 
+on purchases.sku_id = SKUS.id
+where Customer.town = 'Tula' and SKUS.category = 2
+group by 1
+order by people desc

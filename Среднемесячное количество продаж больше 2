@@ -1,0 +1,7 @@
+select an_id, round(1.0 * count(ord_id)/12, 3) as cnt
+from orders
+join analysis
+on orders.ord_an = analysis.an_id
+where ord_datetime between '2020-01-01' and '2020-12-31'
+group by an_id
+order by cnt desc, an_id asc

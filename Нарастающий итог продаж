@@ -1,0 +1,5 @@
+select date(ord_datetime) as dt, ord_id, sum(an_price) over (order by ord_datetime) as cumsum
+from Orders
+join Analysis 
+on Analysis.an_id = Orders.ord_an
+order by ord_id

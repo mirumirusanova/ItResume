@@ -1,0 +1,10 @@
+select Name, 
+       max(case when key = 'FIO' then value 
+           end) as fio,
+       max(case when key = 'Phone' then value 
+           end) AS phone,
+       max(case when key = 'Email' then value 
+           end) AS email
+from LongTable
+group by Name
+order by Name

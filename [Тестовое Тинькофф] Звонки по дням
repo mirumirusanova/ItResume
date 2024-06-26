@@ -1,0 +1,4 @@
+select start_dttm as date, count(call_id) as cnt_calls
+from tinkoff.calls
+where start_dttm between '2020-10-01' and now()
+group by start_dttm

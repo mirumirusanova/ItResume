@@ -1,0 +1,6 @@
+with hp as (select department_id, count(id) as cnt, avg(salary) as av, sum(salary) as sm
+            from employee2
+            group by department_id) 
+
+select department_id, null as name, (select max(av) from hp) * (1 + cnt) - sm as salary, null as chief_id
+from hp

@@ -1,0 +1,6 @@
+select NAME
+from COUNTY
+where COUNTY_CODE not in (select COUNTY_CODE 
+                          from CUSTOMER 
+                          join C_ORDERS 
+                          on CUSTOMER.ID_CUSTOMER = C_ORDERS.ID_CUSTOMER)

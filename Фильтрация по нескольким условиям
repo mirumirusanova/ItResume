@@ -1,0 +1,4 @@
+select an_name, an_price
+from Analysis
+where an_price < 1000 and (lower(an_name) like '%anti%' or lower(an_name) like '%кров%')
+order by an_price desc

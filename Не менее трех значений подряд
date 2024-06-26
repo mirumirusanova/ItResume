@@ -1,0 +1,6 @@
+select distinct Num as ConsecutiveNums
+from (select ID, Num, count(Num) over(partition by Num) as cnt
+      from Logs
+      group by ID, Num) as hp
+where cnt > 2
+order by Num desc

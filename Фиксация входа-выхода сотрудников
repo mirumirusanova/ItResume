@@ -1,0 +1,5 @@
+select employee, check_date, sum 
+from (select employee, date(check_time) as check_date, (max(check_time) - min(check_time))::time as sum
+      from gate
+      group by employee, date(check_time)) as hp
+where sum < '08:00:00'

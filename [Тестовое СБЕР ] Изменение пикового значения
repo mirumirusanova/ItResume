@@ -1,0 +1,7 @@
+select dt, cnt, max(cnt) over (order by dt) as max_cnt, coalesce(cnt, 0) - max(cnt) over (order by dt) as diff
+from (select dt, nullif(count(id), 0) as cnt
+	  from (select * 
+	        from generate_series('2022-01-01 00:00'::timestamp, '2022-04-21'::timestamp, interval '1 days') as dt) as dates
+	  left join users 
+	  on dates.dt = users.date_joined::date 
+	  group by dt) as hp

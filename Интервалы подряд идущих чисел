@@ -1,0 +1,5 @@
+select min(a) as start, max(a) as end
+from (select a - row_number() over (order by a) as long, a
+      from Numbers) as hp
+group by long
+order by start
